@@ -1,0 +1,40 @@
+.app-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: url("../assets/picture1.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.top-section {
+  text-align: center;
+  padding: 100px 0;
+  // background-color: cadetblue;
+  color: whitesmoke;
+  h1 {
+    font-size: 120px;
+    font-weight: bold;
+    text-shadow: 0 1px 7px rgba(black, 0.1);
+  }
+  h2 {
+    font-size: 36px;
+    text-shadow: 0 1px 4px rgba(black, 0.1);
+  }
+}
+
+.content-section {
+  flex-grow: 1;
+  //othrewise min-height is equal to content height, while we want overflow auto (scrollbar)
+  min-height: 0;
+  // background-color: aquamarine;
+}
+
+.bottom-section {
+  // background-color: coral;
+  app-tabs {
+    display: flex;
+  }
+}

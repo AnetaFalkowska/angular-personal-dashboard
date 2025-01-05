@@ -1,0 +1,100 @@
+.todo-item {
+  position: relative;
+  background: rgba(black, 0.5);
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px 12px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.todo-text {
+  color: rgba(white, 0.85);
+}
+
+.check-box {
+  display: flex;
+  padding: 4px;
+  border: 2px solid rgba(white, 0.35);
+  border-radius: 50%;
+  margin-right: 15px;
+
+  i {
+    font-size: 18px;
+    opacity: 0;
+  }
+}
+
+.todo-item:hover {
+  .check-box {
+    border-color: transparent;
+    background-color: rgba(white, 0.35);
+  }
+  .todo-text {
+    color: rgba(white, 0.95);
+  }
+}
+
+.check-box,
+.todo-text {
+  transition: all 0.12s;
+}
+
+.todo-item.completed {
+  .check-box {
+    border-color: transparent;
+    background-color: rgb(9, 218, 89);
+    i {
+      opacity: 1;
+    }
+  }
+  .todo-text {
+    color: rgba(white, 0.5);
+  }
+}
+
+.todo-item-actions {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background: rgba(110, 109, 109, 0.85);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 4px 12px rgba(black, 0.2);
+  border-radius: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.todo-item-actions-btn {
+  background: transparent;
+  padding: 10px;
+  border-radius: inherit;
+
+  &:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-left: 14px;
+  }
+  &:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-right: 14px;
+  }
+
+  &:hover {
+    background: rgba(50,50,53);
+  }
+}
+
+.todo-item-actions-btn i {
+  font-size: 20px;
+}
+
+.todo-item:hover .todo-item-actions {
+  visibility: visible;
+  opacity:1;
+  // tr-delay nie ustawiam tutaj, nie na todo-item:hover, bo chce zeby delay bylo tylko przy pojawianiu sie buttons, nie znikaniu
+  transition-delay: 0.5s;
+}
