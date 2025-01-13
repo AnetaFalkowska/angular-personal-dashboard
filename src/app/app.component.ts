@@ -10,10 +10,11 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { NotificationComponent } from "./notification/notification.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TabsComponent],
+  imports: [RouterOutlet, TabsComponent, NotificationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   animations: [
