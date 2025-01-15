@@ -10,7 +10,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { NotificationComponent } from "./notification/notification.component";
+import { NotificationComponent } from './notification/notification.component';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +20,7 @@ import { NotificationComponent } from "./notification/notification.component";
   animations: [
     trigger('routeAnim', [
       transition(':increment', [
-        style({ position: 'relative', overflow:'hidden' }),
+        style({ position: 'relative', overflow: 'hidden' }),
         query(
           ':enter, :leave',
           [
@@ -36,16 +36,35 @@ import { NotificationComponent } from "./notification/notification.component";
         ),
         query(':enter', [style({ opacity: 0 })], { optional: true }),
         group([
-          query(':leave', [animate('200ms ease-in', style({ opacity: 0, transform:'translateX(-40px)' }))], {
-            optional: true,
-          }),
-          query(':enter', [style({transform:'translateX(40px)'}), animate('250ms 120ms ease-out', style({ opacity: 1, transform:'translateX(0)' }))], {
-            optional: true,
-          }),
+          query(
+            ':leave',
+            [
+              animate(
+                '200ms ease-in',
+                style({ opacity: 0, transform: 'translateX(-40px)' })
+              ),
+            ],
+            {
+              optional: true,
+            }
+          ),
+          query(
+            ':enter',
+            [
+              style({ transform: 'translateX(40px)' }),
+              animate(
+                '250ms 120ms ease-out',
+                style({ opacity: 1, transform: 'translateX(0)' })
+              ),
+            ],
+            {
+              optional: true,
+            }
+          ),
         ]),
       ]),
       transition(':decrement', [
-        style({ position: 'relative', overflow:'hidden' }),
+        style({ position: 'relative', overflow: 'hidden' }),
         query(
           ':enter, :leave',
           [
@@ -61,12 +80,31 @@ import { NotificationComponent } from "./notification/notification.component";
         ),
         query(':enter', [style({ opacity: 0 })], { optional: true }),
         group([
-          query(':leave', [animate('200ms ease-in', style({ opacity: 0, transform:'translateX(40px)' }))], {
-            optional: true,
-          }),
-          query(':enter', [style({transform:'translateX(-40px)'}), animate('250ms 120ms ease-out', style({ opacity: 1, transform:'translateX(0)' }))], {
-            optional: true,
-          }),
+          query(
+            ':leave',
+            [
+              animate(
+                '200ms ease-in',
+                style({ opacity: 0, transform: 'translateX(40px)' })
+              ),
+            ],
+            {
+              optional: true,
+            }
+          ),
+          query(
+            ':enter',
+            [
+              style({ transform: 'translateX(-40px)' }),
+              animate(
+                '250ms 120ms ease-out',
+                style({ opacity: 1, transform: 'translateX(0)' })
+              ),
+            ],
+            {
+              optional: true,
+            }
+          ),
         ]),
       ]),
     ]),
@@ -86,7 +124,10 @@ import { NotificationComponent } from "./notification/notification.component";
 })
 export class AppComponent {
   prepareRoute(outlet: RouterOutlet) {
-    if (outlet.isActivated) return outlet.activatedRouteData['tab'];
-    return null;
+    if (outlet.isActivated) {
+      const tab = outlet.activatedRouteData['tab']
+      if (!tab) return "secondary";
+      return tab
+    }
   }
 }

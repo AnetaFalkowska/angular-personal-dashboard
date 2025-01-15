@@ -42,4 +42,8 @@ this.todoService.deleteTodo(todo.id)
 this.notificationService.show("Deleted Todo!")
 }
 
+trackById(index:number, todo:any):any {
+  return todo.id
+}
+
 }

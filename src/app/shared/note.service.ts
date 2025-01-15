@@ -12,9 +12,7 @@ export class NoteService implements OnDestroy {
   constructor() {
     this.loadState();
     this.storageListenSub = fromEvent<StorageEvent>(window, 'storage').subscribe((event: StorageEvent) => {
-      console.log(event)
-      if (event.key==="notes") {
-        console.log("yes")
+           if (event.key==="notes") {
         this.loadState()
       }
     });
@@ -69,7 +67,7 @@ export class NoteService implements OnDestroy {
       const updatedNotes = notesInLocalStorage ? [...JSON.parse(notesInLocalStorage)] : [];
       this.notes.push(...updatedNotes) // modifying the existing array
     } catch (err) {
-      console.log('There was an error retrieving Notes fomr local storage');
+      console.log('There was an error retrieving Notes from local storage');
       console.log(err);
     }
   }
